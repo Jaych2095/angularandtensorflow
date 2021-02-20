@@ -20,7 +20,7 @@ export class PostService{
     public user:User[]=[];
     private islogin:boolean=false;
     userdata = new BehaviorSubject<User>(null)
-    private key:any='AIzaSyCqZy3QbPmMa1lHe6E5x0WL50Csl1l4FbI';
+    private key:any= ''; //your key for Firebase
     constructor(private http:HttpClient)
     {
 
