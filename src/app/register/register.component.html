@@ -1,0 +1,64 @@
+<div class="alert alert-danger" *ngIf="error">
+    <p>{{error}}</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div *ngIf="isLoading">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="!isLoading">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Register Here</h2>
+            <form (ngSubmit)="onSubmit()" #f="ngForm">
+            <label>First Name</label>
+            <input type="text" class="form-control"
+            ngModel
+            required
+            name="firstname"
+            #name="ngModel"
+            
+            >
+            <span class="help-block" *ngIf="!name.valid && name.touched" style="color:red">Please Enter a Valid First Name</span>
+            <br>
+            <label>Last Name</label>
+            <input type="text" class="form-control"
+            ngModel
+            required
+            name="lastname"
+            #lastname="ngModel"
+            ngModel
+            >
+            <span class="help-block" *ngIf="!lastname.valid && lastname.touched" style="color:red">Please Enter a Valid Last Name</span>
+            <br>
+            <label>UserName(Email Id)</label>
+            <input type="text" class="form-control"
+            ngModel
+            required
+            name="username"
+            #username="ngModel"
+            ngModel
+            >
+            <span class="help-block" *ngIf="!username.valid && username.touched" style="color:red">Please Enter a Valid User Name</span>
+            <br>
+            <label>Password</label>
+            <input type="password" class="form-control"
+            ngModel
+            required
+            name="password"
+            #password="ngModel"
+            ngModel
+            >
+            <span class="help-block" *ngIf="!password.valid && password.touched" style="color:red">Please Enter a Valid Password</span>
+            <br>
+            <button class="btn btn-primary" [disabled]="!f.valid">Register</button> |
+            <a routerLink="/login" class="btn btn-link">Cancel</a>
+        </form>
+        
+        </div>
+    </div>
+</div>

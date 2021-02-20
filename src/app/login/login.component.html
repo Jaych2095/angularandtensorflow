@@ -1,0 +1,46 @@
+<div class="alert alert-danger" *ngIf="error">
+    <p>{{error}}</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div *ngIf="isLoading">
+                <app-loading-spinner></app-loading-spinner>
+            </div>
+            <div class="alert alert-success" *ngIf="successlogin">
+                <p>Fetching your data from Server</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="!isLoading">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Sign In</h2>
+            <form #f="ngForm" (ngSubmit)="onSubmit()">
+                <label>Username(Email Id)</label>
+                <input type="text" class="form-control"
+                ngModel
+                required
+                name="username"
+                #username="ngModel"
+                minlength="6">
+                <span class="help-block" *ngIf="!username.valid && username.touched" style="color:red">Please Enter a Valid User Name</span>
+                <br>
+                <label>Password</label>
+                <input type="password" class="form-control"
+                ngModel
+                required
+                name="password"
+                #password="ngModel"
+                minlength="6"
+                >
+                <span class="help-block" *ngIf="!password.valid && password.touched" style="color:red">Please Enter a Valid Password</span>
+                <br>
+                <button class="btn btn-primary" [disabled]="!f.valid">Login</button> |
+                <a routerLink="/register" class="btn btn-link">Sign Up</a>  
+            </form>
+
+        </div>
+    </div>
+</div>
